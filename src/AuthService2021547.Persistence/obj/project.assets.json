@@ -3067,11 +3067,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Informatica\\Desktop\\AuthService2021547-main\\src\\AuthService2021547.Persistence\\AuthService2021547.Persistence.csproj",
+      "projectUniqueName": "C:\\Users\\Informatica\\AuthService2021547-2\\src\\AuthService2021547.Persistence\\AuthService2021547.Persistence.csproj",
       "projectName": "AuthService2021547.Persistence",
-      "projectPath": "C:\\Users\\Informatica\\Desktop\\AuthService2021547-main\\src\\AuthService2021547.Persistence\\AuthService2021547.Persistence.csproj",
+      "projectPath": "C:\\Users\\Informatica\\AuthService2021547-2\\src\\AuthService2021547.Persistence\\AuthService2021547.Persistence.csproj",
       "packagesPath": "C:\\Users\\Informatica\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Informatica\\Desktop\\AuthService2021547-main\\src\\AuthService2021547.Persistence\\obj\\",
+      "outputPath": "C:\\Users\\Informatica\\AuthService2021547-2\\src\\AuthService2021547.Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Informatica\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -3086,11 +3086,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Informatica\\Desktop\\AuthService2021547-main\\src\\AuthService2021547.Application\\AuthService2021547.Application.csproj": {
-              "projectPath": "C:\\Users\\Informatica\\Desktop\\AuthService2021547-main\\src\\AuthService2021547.Application\\AuthService2021547.Application.csproj"
+            "C:\\Users\\Informatica\\AuthService2021547-2\\src\\AuthService2021547.Application\\AuthService2021547.Application.csproj": {
+              "projectPath": "C:\\Users\\Informatica\\AuthService2021547-2\\src\\AuthService2021547.Application\\AuthService2021547.Application.csproj"
             },
-            "C:\\Users\\Informatica\\Desktop\\AuthService2021547-main\\src\\AuthService2021547.Domain\\AuthService2021547.Domain.csproj": {
-              "projectPath": "C:\\Users\\Informatica\\Desktop\\AuthService2021547-main\\src\\AuthService2021547.Domain\\AuthService2021547.Domain.csproj"
+            "C:\\Users\\Informatica\\AuthService2021547-2\\src\\AuthService2021547.Domain\\AuthService2021547.Domain.csproj": {
+              "projectPath": "C:\\Users\\Informatica\\AuthService2021547-2\\src\\AuthService2021547.Domain\\AuthService2021547.Domain.csproj"
             }
           }
         }

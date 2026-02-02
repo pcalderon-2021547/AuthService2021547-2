@@ -1,10 +1,10 @@
 using AuthService2021547.Domain.Entitis;
-namespace AuthService2021547.Domain.Interface;
+namespace AuthService2021547.Domain.Interfaces;
 
 public interface IRoleRepository
 {
     Task<Role?> GetByNameAsync (string name);
     Task<int> CountUsersInRoleAsync(string roleName);
-    Task<IReadOnlyCollection<User>> GetUsersByRolesAsync(string roleName);
-    Task<IReadOnlyCollection<string>> GetUserRoleNameAsync(string userId);
+    Task<IReadOnlyList<User>> GetUsersByRolesAsync(string roleName);
+    Task<IReadOnlyList<string>> GetUserRoleNameAsync(string userId);
 }

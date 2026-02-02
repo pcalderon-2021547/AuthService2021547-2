@@ -9,7 +9,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<User> Users { get; set; }
     public DbSet<UserProfile> UsersProfile { get; set; }
     public DbSet<Role> Role { get; set; }
-    public DbSet<UserRole> UserRole { get; set; }
+    public DbSet<UserRole> UserRoles { get; set; }
     public DbSet<UserEmail> UserEmails { get; set; }
     public DbSet<UserPasswordReset> UserPasswordResets { get; set; }
 

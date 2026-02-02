@@ -1,17 +1,17 @@
 using AuthService2021547.Domain.Entitis;
 
-namespace AuthService2021547.Domain.Interface;
+namespace AuthService2021547.Domain.Interfaces;
 
 public interface IUserRepository
 {
 
     Task<User> CreateAsync(User user);    
-    Task<User> GetByIDAsync(string Id);    
-    Task<User?> GetByEmialAsync(string email);    
+    Task<User> GetByIdAsync(string Id);    
+    Task<User?> GetByEmailAsync(string email);    
     Task<User?> GetByUsernameAsync(string username);    
     Task<User?> GetByEmailVerificationTokenAsync(string token);    
     Task<User?> GetByPasswordResetTokenAsync(string token);    
-    Task<bool> ExistByEmialAsync (string email);    
+    Task<bool> ExistByEmailAsync (string email);    
     Task<bool> ExistByUsernameAsync (string username);
     Task<User> UpdateAsync (User user);
     Task<bool> DeleteAsync (string id);
