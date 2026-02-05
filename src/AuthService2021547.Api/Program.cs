@@ -10,21 +10,21 @@ using Microsoft.VisualBasic;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.host.UseSerilog((context, service, loggerConfiguration)=>
+builder.Host.UseSerilog((context, service, loggerConfiguration)=>
     loggerConfiguration
         .ReadFrom.Configuration(context.Configuration)
         .ReadFrom.Services(service));
 
 builder.Services.AddControllers(FileOptions =>
 {
-    options.ModelBinderProvider.Insert(0, new FileDataBinderProvider());
+    options.ModelBinderProviders.Insert(0, new FileDataBinderProvider());
 })
 .AddJsonOptions(o =>
 {
     o.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
 });
 
-builder.Services.AddApplicationServices(builder.configuration);
+builder.Services.AddApplicationServices(builder.Configuration);
 
 var app = builder.Build();
 
@@ -67,9 +67,9 @@ app.UseSecurityHeaders(policies => policies
 // Core middlewares
 app.UseHttpsRedirection();
 app.useCors("DefoultCorsPolicy");
-app.UseRateLimiter();
-app.UseAurhemtication();
-app.UseAuthorization();
+//app.UseRateLimiter();
+//app.UseAurhemtication();
+//app.UseAuthorization();
 
 app.MapControllers();
 
@@ -82,7 +82,7 @@ app.MapGet("/health", () =>
         status = "Healthy",
         timestamps = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss:fffz")
     };
-    return Results.ok(response);
+    return Results.Ok(response);
 });
 
 // Startup log: addresses and health endpoint

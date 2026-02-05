@@ -9,3 +9,15 @@ C:\Users\Informatica\Desktop\AuthService2021547\src\AuthService2021547.Domain\ob
 C:\Users\Informatica\Desktop\AuthService2021547\src\AuthService2021547.Domain\obj\Debug\net8.0\refint\AuthService2021547.Domain.dll
 C:\Users\Informatica\Desktop\AuthService2021547\src\AuthService2021547.Domain\obj\Debug\net8.0\AuthService2021547.Domain.pdb
 C:\Users\Informatica\Desktop\AuthService2021547\src\AuthService2021547.Domain\obj\Debug\net8.0\ref\AuthService2021547.Domain.dll
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\bin\Debug\net8.0\AuthService2021547.Domain.deps.json
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\bin\Debug\net8.0\AuthService2021547.Domain.dll
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\bin\Debug\net8.0\AuthService2021547.Domain.pdb
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\obj\Debug\net8.0\AuthService2021547.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\obj\Debug\net8.0\AuthService2021547.Domain.AssemblyInfoInputs.cache
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\obj\Debug\net8.0\AuthService2021547.Domain.AssemblyInfo.cs
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\obj\Debug\net8.0\AuthService2021547.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\obj\Debug\net8.0\AuthService2021547.Domain.sourcelink.json
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\obj\Debug\net8.0\AuthService2021547.Domain.dll
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\obj\Debug\net8.0\refint\AuthService2021547.Domain.dll
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\obj\Debug\net8.0\AuthService2021547.Domain.pdb
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\obj\Debug\net8.0\ref\AuthService2021547.Domain.dll

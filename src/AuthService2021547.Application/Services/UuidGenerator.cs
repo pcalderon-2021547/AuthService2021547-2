@@ -41,7 +41,7 @@ public static class UuidGenerator
             return false;
  
         var idPart = id[4..];
-        return idPart.All(c => Alphabet.Containts(c));
+        return idPart.All(c => Alphabet.Contains(c));
     }
 }
  

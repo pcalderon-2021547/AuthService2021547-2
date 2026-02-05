@@ -1,5 +1,5 @@
 using AuthService2021547.Api.Models;
-using AuthService2021547.Application.Interfaces;
+using AuthService2021547.Application.Interface;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace AuthService2021547.Api.ModelBinders;
@@ -35,7 +35,7 @@ public class FileDataModelBinder : IModelBiner
 
 public class FileDataModelBinderProvider : IModelBinderProvider
 {
-    public IModelBinder? GetBinder (FileDataModelBinderProviderContext context)
+    public IModelBinder? GetBinder (ModelBinderProviderContext context)
     {
         if (typeof(IFileData).IsAssignableFrom(context.Metadata.ModelType))
         {

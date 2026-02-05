@@ -37,3 +37,14 @@ C:\Users\Informatica\Desktop\AuthService2021547\src\AuthService2021547.Api\obj\D
 C:\Users\Informatica\Desktop\AuthService2021547\src\AuthService2021547.Api\obj\Debug\net8.0\AuthService2021547.Api.pdb
 C:\Users\Informatica\Desktop\AuthService2021547\src\AuthService2021547.Api\obj\Debug\net8.0\AuthService2021547.Api.genruntimeconfig.cache
 C:\Users\Informatica\Desktop\AuthService2021547\src\AuthService2021547.Api\obj\Debug\net8.0\ref\AuthService2021547.Api.dll
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Api\obj\Debug\net8.0\AuthService2021547.Api.dll
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Api\obj\Debug\net8.0\refint\AuthService2021547.Api.dll
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Api\obj\Debug\net8.0\AuthService2021547.Api.pdb
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Api\obj\Debug\net8.0\AuthService2021547.Api.csproj.AssemblyReference.cache
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Api\obj\Debug\net8.0\AuthService2021547.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Api\obj\Debug\net8.0\AuthService2021547.Api.AssemblyInfoInputs.cache
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Api\obj\Debug\net8.0\AuthService2021547.Api.AssemblyInfo.cs
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Api\obj\Debug\net8.0\AuthService2021547.Api.csproj.CoreCompileInputs.cache
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Api\obj\Debug\net8.0\AuthService2021547.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Api\obj\Debug\net8.0\AuthService2021547.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Api\obj\Debug\net8.0\AuthService2021547.Api.sourcelink.json
