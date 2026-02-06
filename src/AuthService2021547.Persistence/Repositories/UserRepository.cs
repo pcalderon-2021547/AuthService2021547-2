@@ -1,5 +1,5 @@
 using System.Data;
-using AuthService20021547.Application.Services;
+using AuthService2021547.Application.Services;
 using AuthService2021547.Domain.Entitis;
 using AuthService2021547.Domain.Enums;
 using AuthService2021547.Domain.Interfaces;
@@ -18,11 +18,11 @@ public class UserRepository(ApplicationDbContext context) : IUserRepository
             .Include(u => u.UserPasswordReset)
             .Include(u => u.UserRoles)
                 .ThenInclude(ur => ur.Role)
-                .FirstOrDefaultAsync(u => u.Id == id);
-            return user ?? throw new InvalidOperationException($"User whith id {id} not found.");
+            .FirstOrDefaultAsync(u => u.Id == id);
+        return user ?? throw new InvalidOperationException($"User whith id {id} not found.");
     }
 
-      public async Task<User?> GetByEmailAsync(string email)
+    public async Task<User?> GetByEmailAsync(string email)
     {
         return await context.Users
             .Include(u => u.UserProfile)
@@ -30,10 +30,10 @@ public class UserRepository(ApplicationDbContext context) : IUserRepository
             .Include(u => u.UserPasswordReset)
             .Include(u => u.UserRoles)
                 .ThenInclude(ur => ur.Role)
-                .FirstOrDefaultAsync(u => EF.Functions.ILike(u.Email, email));
+            .FirstOrDefaultAsync(u => EF.Functions.ILike(u.Email, email));
     }
 
-      public async Task<User?> GetByUsernameAsync(string username)
+    public async Task<User?> GetByUsernameAsync(string username)
     {
         return await context.Users
             .Include(u => u.UserProfile)
@@ -41,45 +41,48 @@ public class UserRepository(ApplicationDbContext context) : IUserRepository
             .Include(u => u.UserPasswordReset)
             .Include(u => u.UserRoles)
                 .ThenInclude(ur => ur.Role)
-                .FirstOrDefaultAsync(u => EF.Functions.ILike(u.Username, username));
-    }
-      public async Task<User?> GetByEmailVerificationTokenAsync(string token)
-    {
-        return await context.Users
-            .Include(u => u.UserProfile)
-            .Include(u => u.UserEmail)
-            .Include(u => u.UserPasswordReset)
-            .Include(u => u.UserRoles)
-                .ThenInclude(ur => ur.Role)
-                .FirstOrDefaultAsync(u => u.UserEmail != null &&
-                                        u.UserEmail.EmailVerificationToken == token &&
-                                        u.UserEmail.EmailVerificationTokenExpiry > DateTime.UtcNow);
-    }
-      public async Task<User?> GetByPasswordResetTokenAsync(string token)
-    {
-        return await context.Users
-            .Include(u => u.UserProfile)
-            .Include(u => u.UserEmail)
-            .Include(u => u.UserPasswordReset)
-            .Include(u => u.UserRoles)
-                .ThenInclude(ur => ur.Role)
-                .FirstOrDefaultAsync(u => u.UserPasswordReset != null &&
-                                        u.UserPasswordReset.PasswordResetToken == token &&
-                                        u.UserPasswordReset.PasswordResetTokenExpiry > DateTime.UtcNow);
+            .FirstOrDefaultAsync(u => EF.Functions.ILike(u.Username, username));
     }
 
-    public async Task<User> CreateAsync (User user)
+    public async Task<User?> GetByEmailVerificationTokenAsync(string token)
+    {
+        return await context.Users
+            .Include(u => u.UserProfile)
+            .Include(u => u.UserEmail)
+            .Include(u => u.UserPasswordReset)
+            .Include(u => u.UserRoles)
+                .ThenInclude(ur => ur.Role)
+            .FirstOrDefaultAsync(u => u.UserEmail != null &&
+                                    u.UserEmail.EmailVerificationToken == token &&
+                                    u.UserEmail.EmailVerificationTokenExpiry > DateTime.UtcNow);
+    }
+
+    public async Task<User?> GetByPasswordResetTokenAsync(string token)
+    {
+        return await context.Users
+            .Include(u => u.UserProfile)
+            .Include(u => u.UserEmail)
+            .Include(u => u.UserPasswordReset)
+            .Include(u => u.UserRoles)
+                .ThenInclude(ur => ur.Role)
+            .FirstOrDefaultAsync(u => u.UserPasswordReset != null &&
+                                    u.UserPasswordReset.PasswordResetToken == token &&
+                                    u.UserPasswordReset.PasswordResetTokenExpiry > DateTime.UtcNow);
+    }
+
+    public async Task<User> CreateAsync(User user)
     {
         context.Users.Add(user);
         await context.SaveChangesAsync();
         return await GetByIdAsync(user.Id);
     }
 
-    public async Task<User> UpdateAsync (User user)
+    public async Task<User> UpdateAsync(User user)
     {
         await context.SaveChangesAsync();
         return await GetByIdAsync(user.Id);
     }
+
     public async Task<bool> DeleteAsync(string id)
     {
         var user = await GetByIdAsync(id);
@@ -88,36 +91,36 @@ public class UserRepository(ApplicationDbContext context) : IUserRepository
         return true;
     }
 
-    public async Task<bool> ExistByEmailAsync(string email)
+    public async Task<bool> ExistsByEmailAsync(string email)
     {
         return await context.Users
-        .AnyAsync( u => EF.Functions.ILike(u.Email, email));
+            .AnyAsync(u => EF.Functions.ILike(u.Email, email));
     }
 
-    public async Task<bool> ExistByUsernameAsync(string username)
+    public async Task<bool> ExistsByUsernameAsync(string username)
     {
         return await context.Users
-        .AnyAsync( u => EF.Functions.ILike(u.Username, username));
+            .AnyAsync(u => EF.Functions.ILike(u.Username, username));
     }
-    public async Task UpdateUserRoleAsync (string userId, string roleId)
+
+    public async Task UpdateUserRoleAsync(string userId, string roleId)
     {
-        var existingRoles = await context.UsersProfile
-            .Where (ur => ur.UserId == userId)
+        var existingRoles = await context.UserProfiles
+            .Where(ur => ur.UserId == userId)
             .ToListAsync();
 
-        context.UsersProfile.RemoveRange(existingRoles);
+        context.UserProfiles.RemoveRange(existingRoles);
 
         var newUserRole = new UserRole
-    {
-        Id = UuidGenerator.GenerateUserId(),
-        UserId = userId,
-        CreatedAt = DateTime.UtcNow,
-        UpdatedAt = DateTime.UtcNow
-    };
+        {
+            Id = UuidGenerator.GenerateUserId(),
+            UserId = userId,
+            RoleId = roleId,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
 
-    context.UserRoles.Add(newUserRole);
-    await context.SaveChangesAsync();
+        context.UserRoles.Add(newUserRole);
+        await context.SaveChangesAsync();
     }
-
 }
-

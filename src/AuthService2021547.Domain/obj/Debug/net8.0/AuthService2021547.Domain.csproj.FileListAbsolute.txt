@@ -21,3 +21,4 @@ C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\
 C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\obj\Debug\net8.0\refint\AuthService2021547.Domain.dll
 C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\obj\Debug\net8.0\AuthService2021547.Domain.pdb
 C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Domain\obj\Debug\net8.0\ref\AuthService2021547.Domain.dll
+C:\Users\Informatica\Desktop\AuthService2021547\src\AuthService2021547.Domain\obj\Debug\net8.0\AuthService2021547.Domain.sourcelink.json

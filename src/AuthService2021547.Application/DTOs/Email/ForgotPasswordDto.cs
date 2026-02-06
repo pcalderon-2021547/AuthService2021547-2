@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AuthService2021547.Application.DTOs.Email;
 
-public class ForgotPaswwordDto
+public class ForgotPasswordDto
 {
     [Required]
     [EmailAddress]

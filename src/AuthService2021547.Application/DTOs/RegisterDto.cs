@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
-using AuthService2021547.Application.Interface;
+using AuthService2021547.Application.Interfaces;
 
 namespace AuthService2021547.Application.DTOs;
 
-public class RegistroDto
+public class RegisterDto
 {
     [Required]
     [MaxLength(25)]

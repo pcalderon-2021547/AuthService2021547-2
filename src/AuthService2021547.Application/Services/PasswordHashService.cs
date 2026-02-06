@@ -1,4 +1,4 @@
-using AuthService2021547.Application.Interface;
+using AuthService2021547.Application.Interfaces;
 using Konscious.Security.Cryptography;
 using System.Data.SqlTypes;
 using System.Security.Cryptography;

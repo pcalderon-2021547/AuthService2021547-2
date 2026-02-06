@@ -7,8 +7,8 @@ namespace AuthService2021547.Persistence.Data;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
     public DbSet<User> Users { get; set; }
-    public DbSet<UserProfile> UsersProfile { get; set; }
-    public DbSet<Role> Role { get; set; }
+    public DbSet<UserProfile> UserProfiles { get; set; }
+    public DbSet<Role> Roles { get; set; }
     public DbSet<UserRole> UserRoles { get; set; }
     public DbSet<UserEmail> UserEmails { get; set; }
     public DbSet<UserPasswordReset> UserPasswordResets { get; set; }
@@ -57,42 +57,42 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         {
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Id)
-            .HasMaxLength(16)
-            .ValueGeneratedOnAdd();
+                .HasMaxLength(16)
+                .ValueGeneratedOnAdd();
             entity.Property(e => e.Name)
-            .IsRequired()
-            .HasMaxLength(25);
+                .IsRequired()
+                .HasMaxLength(25);
             entity.Property(e => e.Surname)
-            .IsRequired()
-            .HasMaxLength(25);
+                .IsRequired()
+                .HasMaxLength(25);
             entity.Property(e => e.Username)
-            .IsRequired();
+                .IsRequired();
             entity.Property(e => e.Email)
-            .IsRequired();
+                .IsRequired();
             entity.Property(e => e.Password)
-            .IsRequired()
-            .HasMaxLength(255);
+                .IsRequired()
+                .HasMaxLength(255);
             entity.Property(e => e.Status)
-        .HasDefaultValue(false);
+                .HasDefaultValue(false);
             entity.Property(e => e.CreatedAt)
-            .IsRequired();
+                .IsRequired();
             entity.Property(e => e.UpdatedAt)
-            .IsRequired();
+                .IsRequired();
             entity.HasIndex(e => e.Username).IsUnique();
             entity.HasIndex(e => e.Email).IsUnique();
 
-        entity.HasOne(e => e.UserProfile)
-            .WithOne(p => p.User)
-            .HasForeignKey<UserProfile>(p => p.UserId);
-        entity.HasMany(e => e.UserRoles)
-            .WithOne(ur => ur.User)
-            .HasForeignKey(ur => ur.UserId);
-        entity.HasOne(e => e.UserEmail)
-            .WithOne(ur => ur.User)
-            .HasForeignKey<UserEmail>(ue => ue.UserId);
-        entity.HasOne(e => e.UserPasswordReset)
-            .WithOne(upr => upr.User)
-            .HasForeignKey<UserEmail>(upe => upe.UserId);
+            entity.HasOne(e => e.UserProfile)
+                .WithOne(p => p.User)
+                .HasForeignKey<UserProfile>(p => p.UserId);
+            entity.HasMany(e => e.UserRoles)
+                .WithOne(ur => ur.User)
+                .HasForeignKey(ur => ur.UserId);
+            entity.HasOne(e => e.UserEmail)
+                .WithOne(ur => ur.User)
+                .HasForeignKey<UserEmail>(ue => ue.UserId);
+            entity.HasOne(e => e.UserPasswordReset)
+                .WithOne(upr => upr.User)
+                .HasForeignKey<UserPasswordReset>(upr => upr.UserId);
         });
 
         // Configuración de UserProfile

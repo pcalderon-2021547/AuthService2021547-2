@@ -1,5 +1,6 @@
 
 using AuthService2021547.Persistence.Data;
+using AuthService2021547.Api.Middlewares;
 using AuthService2021547.Api.Extensions;
 using AuthService2021547.Api.ModelBinders;
 using Serilog;
@@ -10,14 +11,14 @@ using Microsoft.VisualBasic;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseSerilog((context, service, loggerConfiguration)=>
+builder.Host.UseSerilog((context, services, loggerConfiguration) =>
     loggerConfiguration
         .ReadFrom.Configuration(context.Configuration)
-        .ReadFrom.Services(service));
+        .ReadFrom.Services(services));
 
-builder.Services.AddControllers(FileOptions =>
+builder.Services.AddControllers(options =>
 {
-    options.ModelBinderProviders.Insert(0, new FileDataBinderProvider());
+    options.ModelBinderProviders.Insert(0, new FileDataModelBinderProvider());
 })
 .AddJsonOptions(o =>
 {
@@ -25,6 +26,9 @@ builder.Services.AddControllers(FileOptions =>
 });
 
 builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddApiDocumentation();
+builder.Services.AddJwtAuthentication(builder.Configuration);
+builder.Services.AddRateLimitingPolicies();
 
 var app = builder.Build();
 
@@ -37,7 +41,7 @@ if (app.Environment.IsDevelopment())
 
 // Add Serilog request logging
 app.UseSerilogRequestLogging();
- 
+
 // Add Security Headers using NetEscapades package
 app.UseSecurityHeaders(policies => policies
     .AddDefaultSecurityHeaders()
@@ -62,25 +66,26 @@ app.UseSecurityHeaders(policies => policies
     .AddCustomHeader("Cache-Control", "no-store, no-cache, must-revalidate, private")
 );
 
-//Global exception handling
+// Global exception handling
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 // Core middlewares
 app.UseHttpsRedirection();
-app.useCors("DefoultCorsPolicy");
-//app.UseRateLimiter();
-//app.UseAurhemtication();
-//app.UseAuthorization();
+app.UseCors("DefaultCorsPolicy");
+app.UseRateLimiter();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 
-AppWinStyle.MapHelthChecks("/health");
+app.MapHealthChecks("/health");
 
 app.MapGet("/health", () =>
 {
     var response = new
     {
         status = "Healthy",
-        timestamps = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss:fffz")
+        timestamps = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
     };
     return Results.Ok(response);
 });
@@ -94,7 +99,7 @@ app.Lifetime.ApplicationStarted.Register(() =>
         var server = app.Services.GetRequiredService<IServer>();
         var addressesFeature = server.Features.Get<IServerAddressesFeature>();
         var addresses = (IEnumerable<string>?)addressesFeature?.Addresses ?? app.Urls;
- 
+
         if (addresses != null && addresses.Any())
         {
             foreach (var addr in addresses)
@@ -119,17 +124,17 @@ using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
- 
+
     try
     {
         logger.LogInformation("Checking database connection...");
- 
+
         // Ensure database is created (similar to Sequelize sync in Node.js)
         await context.Database.EnsureCreatedAsync();
- 
+
         logger.LogInformation("Database ready. Running seed data...");
         await DataSeeder.SeedAsync(context);
- 
+
         logger.LogInformation("Database initialization completed successfully");
     }
     catch (Exception ex)

@@ -1,4 +1,4 @@
-namespace AuthService2021547.Application.Interface;
+namespace AuthService2021547.Application.Interfaces;
 
 public interface IPasswordHashService
 {

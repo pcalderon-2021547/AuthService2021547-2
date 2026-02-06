@@ -3,13 +3,13 @@ using AuthService2021547.Domain.Interfaces;
 using AuthService2021547.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
  
-namespace AuthServiceIN6BV.Persistence.Repositories;
+namespace AuthService2021547.Persistence.Repositories;
  
 public class RoleRepository(ApplicationDbContext context) : IRoleRepository
 {
     public async Task<Role?> GetByNameAsync(string roleName)
     {
-        return await context.Role.FirstOrDefaultAsync(r => r.Name == roleName);
+        return await context.Roles.FirstOrDefaultAsync(r => r.Name == roleName);
     }
  
     public async Task<int> CountUsersInRoleAsync(string roleName)

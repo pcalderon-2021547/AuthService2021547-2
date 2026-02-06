@@ -1,17 +1,16 @@
 using AuthService2021547.Application.DTOs;
 using AuthService2021547.Application.DTOs.Email;
 
-namespace AuthService2021547.Application.Interface;
+namespace AuthService2021547.Application.Interfaces;
 
 public interface IAuthService
-{ 
- Task<RegisterResponseDto> RegisterAsync(RegistroDto registroDto);
- Task<AuthResponseDto> LoginAsync(LoginDto loginDto);
- Task<EmailResponseDto> VerifuEmailAsync (VerifyEmailDto verifyEmailDto);
- Task<EmailResponseDto> ResendVerificationEmailAsync(ResendVerificationDto resenDto);
- Task<EmailResponseDto> ForgotPasswordAsync (ForgotPaswwordDto forgotPaswwordDto);
- Task<EmailResponseDto> ResetPasswordAsync (ResetPasswordDto resetPasswordDto);
- Task<UserResponseDto> GetUserByIdAsync(string userId);
-
+{
+    Task<RegisterResponseDto> RegisterAsync(RegisterDto registerDto);
+    Task<AuthResponseDto> LoginAsync(LoginDto loginDto);
+    Task<EmailResponseDto> VerifyEmailAsync(VerifyEmailDto verifyEmailDto);
+    Task<EmailResponseDto> ResendVerificationEmailAsync(ResendVerificationDto resendDto);
+    Task<EmailResponseDto> ForgotPasswordAsync(ForgotPasswordDto forgotPassswordDto);
+    Task<EmailResponseDto> ResetPasswordAsync(ResetPasswordDto resetPasswordDto);
+    Task<UserResponseDto?> GetUserByIdAsync(string userId);
 }
 

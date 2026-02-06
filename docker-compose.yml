@@ -6,7 +6,7 @@ services:
         container_name: AutService2021547
         restart: always
         environment:
-          POSTGRES_DB: Kinalitos2021547
+          POSTGRES_DB: bebesito2021547
           POSTGRES_USER: root
           POSTGRES_PASSWORD: admin
         ports:

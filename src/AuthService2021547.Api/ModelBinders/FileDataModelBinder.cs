@@ -1,32 +1,32 @@
 using AuthService2021547.Api.Models;
-using AuthService2021547.Application.Interface;
+using AuthService2021547.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace AuthService2021547.Api.ModelBinders;
 
-public class FileDataModelBinder : IModelBiner
+public class FileDataModelBinder : IModelBinder
 {
-    
-    public Task BinModelAsync(ModelBindigContext bindigContext)
+    public Task BindModelAsync(ModelBindingContext bindingContext)
     {
-        ArgumentNullException.ThrowIfNull(bindigContext);
-        if (!typeof(IFileData).IsAssignableFrom(bindigContext.ModelType))
+        ArgumentNullException.ThrowIfNull(bindingContext);
+
+        if(!typeof(IFileData).IsAssignableFrom(bindingContext.ModelType))
         {
             return Task.CompletedTask;
         }
 
-        var request = bindigContext.HttpContext.Request;
+        var request = bindingContext.HttpContext.Request;
 
-        var file = request.From.Files.GetFile(bindigContext.FileName);
+        var file = request.Form.Files.GetFile(bindingContext.FieldName);
 
         if(file != null && file.Length > 0)
         {
             var fileData = new FormFileAdapter(file);
-            bindigContext.Result = ModelBindingResult.Sucess(null);
+            bindingContext.Result = ModelBindingResult.Success(fileData);
         }
         else
         {
-            bendingContext.Result = ModelBindingResult.Sucess(null);
+            bindingContext.Result = ModelBindingResult.Success(null);
         }
 
         return Task.CompletedTask;
@@ -35,13 +35,12 @@ public class FileDataModelBinder : IModelBiner
 
 public class FileDataModelBinderProvider : IModelBinderProvider
 {
-    public IModelBinder? GetBinder (ModelBinderProviderContext context)
+    public IModelBinder? GetBinder(ModelBinderProviderContext context)
     {
-        if (typeof(IFileData).IsAssignableFrom(context.Metadata.ModelType))
+        if(typeof(IFileData).IsAssignableFrom(context.Metadata.ModelType))
         {
             return new FileDataModelBinder();
         }
-
         return null;
     }
 }

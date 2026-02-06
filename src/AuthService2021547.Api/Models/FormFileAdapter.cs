@@ -1,4 +1,4 @@
-using AuthService2021547.Application.Interface;
+using AuthService2021547.Application.Interfaces;
 
 namespace AuthService2021547.Api.Models;
 

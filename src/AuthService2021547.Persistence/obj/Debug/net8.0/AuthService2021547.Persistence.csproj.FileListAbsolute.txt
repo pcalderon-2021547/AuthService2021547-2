@@ -35,3 +35,6 @@ C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Persist
 C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Persistence\obj\Debug\net8.0\AuthServ.7EDD328F.Up2Date
 C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Persistence\obj\Debug\net8.0\AuthService2021547.Persistence.genruntimeconfig.cache
 C:\Users\Informatica\Desktop\AuthService2021547-2\src\AuthService2021547.Persistence\obj\Debug\net8.0\ref\AuthService2021547.Persistence.dll
+C:\Users\Informatica\Desktop\AuthService2021547\src\AuthService2021547.Persistence\bin\Debug\net8.0\AuthService2021547.Persistence.runtimeconfig.json
+C:\Users\Informatica\Desktop\AuthService2021547\src\AuthService2021547.Persistence\obj\Debug\net8.0\AuthService2021547.Persistence.sourcelink.json
+C:\Users\Informatica\Desktop\AuthService2021547\src\AuthService2021547.Persistence\obj\Debug\net8.0\AuthService2021547.Persistence.genruntimeconfig.cache
